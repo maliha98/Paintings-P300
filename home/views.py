@@ -1,13 +1,13 @@
 from django.shortcuts import render
+from product.models import Product
 
 # Create your views here.
 
+
 def homeView(request):
-    return render(request,'index.html',{})
+    product = Product.objects.all()
+    return render(request, 'index.html', {'product': product})
 
 
-def profileView (request):
-    return render(request,'profile.html')
-
-def aboutView (request):
+def aboutView(request):
     return render(request, 'about.html')

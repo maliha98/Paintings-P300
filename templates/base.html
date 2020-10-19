@@ -48,5 +48,12 @@
     {%block content%}
     
     {%endblock content%}
+   <script>
+      $('#myCarousel').on('slide.bs.carousel', function () {
+        $('.carousel').carousel({
+        interval: 1000
+})
+    })
+   </script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 {% extends "base.html" %} 
 
 {%block content%}
-{% load static %}
 
+{% load static %}
 <!--Silde Section-->
 <div
 id="carouselExampleIndicators"
@@ -62,5 +62,27 @@ data-ride="carousel"
   <span class="carousel-control-next-icon" aria-hidden="true"></span>
   <span class="sr-only">Next</span>
 </a>
+</div>
+<!--Product Section-->
+<div class="container p-4">
+  <div class="row row-cols-4">
+    {% for i in product %}
+    <div class="col p-4">
+      <div class="card">
+        <img src="{{ i.product_image.url }}" style="object-fit: cover;width: 100%;height: 200px;" class="card-img-top" alt="loading...">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{i.title}}</h5>
+          <p class="text-secondary"></p>{{i.description}}</p>
+          <p class="text-secondary"></p>Price: ${{i.price}}</p>
+          <div class="text-center">
+            <button type="button" class="btn btn-warning">add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
 </div>
 {%endblock content%}

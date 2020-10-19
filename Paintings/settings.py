@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
+    'home.apps.HomeConfig',
+    'product.apps.ProductConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,5 +126,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = (
-   BASE_DIR, 'static/images'
+    (BASE_DIR / 'static/images')
 )
