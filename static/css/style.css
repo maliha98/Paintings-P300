@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:wght@700|Satisfy|Dosis:wght@600|Caveat|Raleway:wght@200|Yellowtail&display=swap");
-
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 * {
   padding: 0%;
   margin: 0%;
@@ -14,8 +14,3 @@
     height: 520px;
     object-fit: cover;
 }
-
-
-
-
-

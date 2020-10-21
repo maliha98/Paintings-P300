@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only --> 
-    {% load static %}
+  
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -12,7 +13,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Paintings</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Paintings</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -45,10 +47,10 @@
           {% if user.is_authenticated %}
           <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-              <p class="text-white mt-3">{{ request.user }}</p>
+              <p class="text-white mt-3 mr-3">{{ request.user.first_name }} {{ request.user.last_name }}</p>
             </li>
-            <li class="nav-item">
-              <a class="nav-link p-3" href="{% url 'logout' %}">Logout</a>
+            <li class="nav-item btn btn-danger">
+              <a class="nav-link m-0" href="{% url 'logout' %}"> Logout </a>
             </li
             {% else %}>
             <li class="nav-item btn btn-info">
@@ -63,6 +65,19 @@
     {%block content%}
     
     {%endblock content%}
+
+<!-- Footer -->
+	<section id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+					<p class="h6">© All right Reversed.<a class="text-green ml-2" href="#" target="_blank">Paintings</a></p>
+				</div>
+				<hr>
+			</div>	
+		</div>
+	</section>
+	<!-- ./Footer -->
    <script>
       $('#myCarousel').on('slide.bs.carousel', function () {
         $('.carousel').carousel({
