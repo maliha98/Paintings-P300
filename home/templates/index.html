@@ -75,7 +75,7 @@ data-ride="carousel"
           <p class="text-secondary"></p>{{i.description}}</p>
           <p class="text-secondary"></p>Price: ${{i.price}}</p>
           <div class="text-center">
-            <button type="button" class="btn btn-warning">add to cart</button>
+            <a href="{% url 'cart' i.id %}" type="button" class="btn btn-warning">add to cart</a>
           </div>
         </div>
       </div>
