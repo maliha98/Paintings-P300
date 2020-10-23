@@ -8,9 +8,10 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView, name='home'),
-    path('about/', aboutView, name='about'),
     path('signin/', signInPage, name='signin'),
     path('logout/', logoutPage, name='logout'),
     path('signup/', signUpPage, name='signup'),
+    path('cart/', cartView, name='cart'),
+    path('cart/<id>', addToCart, name='cart'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
