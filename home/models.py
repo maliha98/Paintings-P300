@@ -17,6 +17,16 @@ class Cart(models.Model):
         return t
 
 
+class address(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    houseN0 = models.CharField(max_length=100, null=True)
+    cityName = models.CharField(max_length=100, null=True)
+    phone = models.CharField(max_length=14, null=True)
+
+    def __str__(self):
+        return self.user.cityName
+
+
 class Order_Product(models.Model):
     CHOICES = (
         ('Pending', 'Pending'),
@@ -25,6 +35,7 @@ class Order_Product(models.Model):
     )
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     cartitem = models.ManyToManyField(Cart)
+    address = models.ForeignKey(address, null=True, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     status = models.CharField(
         max_length=100, null=True, choices=CHOICES, default=CHOICES[0][0])
