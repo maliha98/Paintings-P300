@@ -5,8 +5,10 @@
 ### ID:172-115-006
 ### Batch:42
 ### Department:CSE
+### Git Username:maliha98
+### Email:malihaztabassumz@gmail.com
 
-## Platform $ Tools
+## Platform & Tools
 * HTML
 * CSS
 * JAVASCRIPT
