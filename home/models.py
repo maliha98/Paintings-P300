@@ -35,5 +35,5 @@ class Order_Product(models.Model):
     def orderTotal(self):
         t = 0
         for i in self.cartitem.all():
-            t += i.orderTotal
+            t += i.productTotal()
         return t

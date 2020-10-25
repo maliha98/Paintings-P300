@@ -45,10 +45,11 @@
                 <a class="nav-link" href="#">About</a>
               </li>
           </ul>
-          {% if user.is_authenticated %}
+          {% if user.is_authenticated %}{% load cartcounter %}
           <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-              <a href="{% url 'cart' %}" class="nav-link mr-3">1 <i style="font-size: 20px;" class="fas fa-cart-plus"></i></a>
+              <a href="{% url 'cart' %}" class="nav-link mr-3">
+                <span class="badge badge-danger">{{request.user | cart_count }}</span><i style="font-size: 20px;" class="fas fa-cart-plus"></i></a>
             </li>
 
             <li class="nav-item">
