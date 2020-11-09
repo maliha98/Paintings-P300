@@ -1,21 +1,31 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from product.models import Product
+from product.models import Product, Category
 from .models import Cart, Order_Product
 # Create your views here.
 
 
 def homeView(request):
     product = Product.objects.all()
-    return render(request, 'index.html', {'product': product})
+    category = Category.objects.all()
+    return render(request, 'index.html', {'product': product, 'category': category})
+
+
+def categoryView(request, id):
+
+    product = Product.objects.all().filter(category_id=id)
+    category = Category.objects.all()
+
+    return render(request, 'index.html', {'product': product, 'category': category})
 
 
 def cartView(request):
     user = request.user
     cart_item = Cart.objects.filter(user=user, purchased=False)
+    category = Category.objects.all()
     order_item = Order_Product.objects.filter(user=user, ordered=False)
     if cart_item.exists():
         order = order_item[0]
-        return render(request, 'cart.html', {'cart': cart_item, 'order': order})
+        return render(request, 'cart.html', {'cart': cart_item, 'order': order, 'category': category})
     else:
         return render(request, 'cart.html')
 

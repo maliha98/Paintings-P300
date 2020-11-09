@@ -34,11 +34,11 @@
                Painting Categories
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Acrylic Paintings</a>
+                {% for c in category %}
+                <a class="dropdown-item" href="{% url 'category' c.id %}">{{c.category}}</a> 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Oil Paintings</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Water Color Paintings</a>
+                {% endfor %}
+              
               </div>
             </li>
             <li class="nav-item">
