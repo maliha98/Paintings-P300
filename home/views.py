@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from product.models import Product, Category
-from .models import Cart, Order_Product
+from .models import Cart, Order_Product, address
+from .form import AddressForm
 # Create your views here.
 
 
@@ -15,7 +16,7 @@ def categoryView(request, id):
     product = Product.objects.all().filter(category_id=id)
     category = Category.objects.all()
 
-    return render(request, 'index.html', {'product': product, 'category': category})
+    return render(request, 'category.html', {'product': product, 'category': category})
 
 
 def cartView(request):
@@ -127,3 +128,74 @@ def removeCart(request, id):
             return redirect("cart")
     else:
         return redirect("cart")
+
+
+def address_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = AddressForm()
+        else:
+            addr = address.objects.get(id=id)
+            form = AddressForm(instance=addr)
+        return render(request, "address_form.html", {'form': form})
+    else:
+        if id == 0:
+            form = AddressForm(request.POST)
+        else:
+            addr = address.objects.get(id=id)
+            form = AddressForm(request.POST, instance=addr)
+        if form.is_valid():
+            form.save()
+        return redirect('checkout')
+
+
+def checkout(request):
+
+    form = AddressForm
+
+    cart = Cart.objects.filter(user=request.user, purchased=False)
+
+    order_qs = Order_Product.objects.filter(
+        user=request.user, ordered=False)
+
+    order_items = order_qs[0].cartitem.all()
+
+    order_total = order_qs[0].orderTotal()
+
+    context = {"form": form, "order_items": order_items,
+               "order_total": order_total, 'cart': cart}
+
+    saved_address = address.objects.filter(
+        user=request.user)
+    if saved_address.exists():
+        savedAddress = saved_address.first()
+        context = {"form": form, "order_items": order_items,
+                   "order_total": order_total, "savedAddress": savedAddress, 'cart': cart}
+    if request.method == "POST":
+        saved_address = address.objects.filter(
+            user=request.user)
+        if saved_address.exists():
+
+            savedAddress = saved_address.first()
+            form = AddressForm(request.POST, instance=savedAddress)
+            if form.is_valid():
+                billingaddress = form.save(commit=False)
+                billingaddress.user = request.user
+                billingaddress.save()
+        else:
+            form = AddressForm(request.POST)
+            if form.is_valid():
+                billingaddress = form.save(commit=False)
+                billingaddress.user = request.user
+                billingaddress.save()
+                return redirect('checkout')
+
+    return render(request, 'checkout.html', context)
+
+
+def payment(request):
+    return render(request, 'payment.html')
+
+
+def aboutPage(request):
+    return render(request, 'about.html')

@@ -16,6 +16,10 @@ urlpatterns = [
     path('<id>', plusCart, name='pluscart'),
     path('minus/<id>', minusCart, name='minuscart'),
     path('remove/<id>', removeCart, name='removecart'),
-    path('catgory/<id>', categoryView, name='category')
+    path('catgory/<id>', categoryView, name='category'),
+    path('checkout/', checkout, name='checkout'),
+    path('address_update/<id>', address_form, name='address_update'),
+    path('payment/', payment, name='payment'),
+    path('about/', aboutPage, name='about'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

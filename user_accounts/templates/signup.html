@@ -3,9 +3,9 @@
 {% endblock title %} {% block content %}
 <style>
     .login {
-  margin-top: 90px;
+  margin-top: 120px;
+  margin-bottom: 40px;
   width: 30%;
-  margin: 1%;
   left: 35%;
 }
 
@@ -18,14 +18,14 @@
 }
 </style>
 <div class="card login">
-  <!-- Default form register -->
+ 
   <form class="text-center border border-light p-5" method="POST">
     {% csrf_token%}
     <p class="h4 mb-4">Sign up</p>
 
     <div class="form-row mb-4">
       <div class="col">
-        <!-- First name -->
+     
         <input
           type="text"
           id="defaultRegisterFormFirstName"
@@ -35,7 +35,7 @@
         />
       </div>
       <div class="col">
-        <!-- Last name -->
+       
         <input
           type="text"
           id="defaultRegisterFormLastName"
@@ -45,8 +45,6 @@
         />
       </div>
     </div>
-
-    <!-- E-mail -->
     <input
       type="email"
       id="defaultRegisterFormEmail"
@@ -54,7 +52,6 @@
       name="email"
       placeholder="E-mail"
     />
-
     <input
       type="text"
       id="defaultRegisterFormEmail"
@@ -62,8 +59,6 @@
       name="username"
       placeholder="Username"
     />
-
-    <!-- Password -->
     <input
       type="password"
       id="defaultRegisterFormPassword"
@@ -78,8 +73,6 @@
     >
       At least 8 characters and 1 digit
     </small>
-
-    <!-- Phone number -->
     <input
       type="password"
       id="defaultRegisterFormPassword"
@@ -88,13 +81,11 @@
       name="password2"
       aria-describedby="defaultRegisterFormPasswordHelpBlock"
     />
-    <!-- Sign up button -->
-    <button class="btn btn-pink my-4 btn-block" type="submit">Sign Up</button>
+    <button class="btn btn-outline-dark my-4 btn-block" type="submit">Sign Up</button>
     <p>
       Already a member?
       <a href="{% url 'signin' %}">Login</a>
     </p>
   </form>
 </div>
-
 {% endblock content %}

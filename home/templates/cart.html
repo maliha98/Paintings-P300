@@ -30,7 +30,7 @@
           </tr>
                 
         {% endfor %}
-        <tr>
+          <tr>
             <th scope="row"></th> 
             <td colspan="3">Total</td>
             <td>${{ order.orderTotal }}</td>
@@ -38,7 +38,7 @@
 
           <tr>
             <td colspan="4"><a href="{% url 'home' %}" class="btn btn-warning btn-lg">Back To Home</a></td>
-            <td><a class="btn btn-info btn-lg">Go To Chcekout</a></td>
+            <td><a class="btn btn-info btn-lg" href="{% url 'checkout' %}">Go To Chcekout</a></td>
           </tr>
         </tbody>
       </table>
