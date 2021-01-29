@@ -1,4 +1,4 @@
-# Project 300
+# Final Year Project 
 
 ### Project Name : BuyPaintings
 ### Name : Maliha Tabassum Jahan
